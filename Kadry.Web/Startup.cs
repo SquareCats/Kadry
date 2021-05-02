@@ -1,4 +1,6 @@
-using Kadry.Web.Data;
+using Kadry.Db;
+using Kadry.Web.Data.Context;
+using Kadry.Web.Data.SeedData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,13 +29,24 @@ namespace Kadry.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            //services.AddIdentity<AppUser, IdentityRole>(
+            //    cfg =>
+            //    {
+            //        cfg.User.RequireUniqueEmail = true;
+            //    }
+            //    ).AddEntityFrameworkStores<KadryDbContext>();
+
+            services.AddDbContext<KadryDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("KadryDb")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<KadryDbContext>();
+
+            //Add seeder Class
+            //services.AddTransient<KadrySeeder>();
+
             services.AddControllersWithViews();
         }
 
