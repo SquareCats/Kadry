@@ -33,14 +33,14 @@ namespace Kadry.Web.Data.SeedData
             {
                 user = new AppUser
                 {
-                    FirstName = "Tomasz",
-                    LastName = "Borowicki",
+                    FirstName = "Jim",
+                    LastName = "Black",
                     UserName = "admin@squarecats.pl",
                     Email = "admin@squarecats.pl",
-                    //Id = "admin@squarecats.pl"
+                    Id = "admin@squarecats.pl"
                 };
 
-                var result = await userManager.CreateAsync(user, "SquareCats!23");
+                var result = await userManager.CreateAsync(user, "CustomPaa$$w0rd)98");
                 if (result != IdentityResult.Success)
                 {
                     throw new InvalidOperationException("Could not create admin user in Seeder.");

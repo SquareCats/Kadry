@@ -16,7 +16,7 @@ namespace Kadry.Web
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            //RunSeeding(host);
+            RunSeeding(host);
 
             host.Run();
         }
@@ -26,7 +26,7 @@ namespace Kadry.Web
 
             using var scope = scopeFactory.CreateScope();
             var seeder = scope.ServiceProvider.GetService<KadrySeeder>();
-            //seeder.SeedAsync().Wait();
+            seeder.SeedAsync().Wait();
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

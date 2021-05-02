@@ -9,13 +9,22 @@ using System.Text;
 
 namespace Kadry.Web.Data.Context
 {
-    public class KadryDbContext : IdentityDbContext
+    public class KadryDbContext : IdentityDbContext<AppUser>
     {
         public KadryDbContext(DbContextOptions<KadryDbContext> options)
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
 
+           
+            modelBuilder.Entity<LevelDictionaryDb>().Property(x => x.Id).ValueGeneratedOnAdd();
+
+           
+            ConfigureModel(modelBuilder);
+            base.OnModelCreating(modelBuilder);
+        }
         private void ConfigureModel(ModelBuilder modelBuider)
         {
             var entityMethodCollection = typeof(ModelBuilder)

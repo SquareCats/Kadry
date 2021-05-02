@@ -1,0 +1,17 @@
+
+
+dodanie EF do dotnet:
+dotnet tool install -g dotnet-ef
+
+migracja 
+dotnet ef migrations add migrationName
+
+
+
+wygenerowanie bazy:
+dotnet ef database update
+
+
+
+lista migracji:
+dotnet ef migrations list
