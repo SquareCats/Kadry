@@ -1,0 +1,40 @@
+﻿@using Kadry.Db 
+@{
+
+    ViewData["Title"] = "Lista Państw";
+    var i = 0;
+}
+@model IEnumerable<CountryDb>
+
+<div class="text-center">
+    <h1 class="display-4">Lista państw</h1>
+
+</div>
+
+
+<table class="table table-info ">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Sort</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Opis</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <th scope="row">@(i=i+1)</th>
+                <td>@obj.Id</td>
+                <td>@obj.Sort </td>
+                <td>@obj.Name</td>
+                <td>@obj.Description</td>
+                <td><a class="menu-button-subitem-rounded" asp-controller="Contrahent" asp-action="Get2" asp-route-id="@(obj.Id.ToString())">Zmień</a></td>
+            </tr>
+
+            @*@(i=i++)*@
+        }
+</table>
