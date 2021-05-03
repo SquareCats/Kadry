@@ -1,5 +1,7 @@
+using CQRS;
 using Kadry.Db;
 using Kadry.Web.Data.Context;
+using Kadry.Web.Data.Repository;
 using Kadry.Web.Data.SeedData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,7 +45,10 @@ namespace Kadry.Web
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<KadryDbContext>();
+            services.AddScoped<IRepository<MyEntity>, KadryRepository<MyEntity>>();
 
+            services.AddScoped<ICommandDispatcher, CommandDispatcher>();
+            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
             //Add seeder Class
             services.AddTransient<KadrySeeder>();
 

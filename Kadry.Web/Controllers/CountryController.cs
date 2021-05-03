@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
+//using AutoMapper;
 using CQRS;
 using Kadry.Db;
 using Kadry.Web.Data.Context;
@@ -18,12 +18,12 @@ namespace Kadry.Web.Controllers
         public CountryController(ILogger<CountryController> logger
             , KadryDbContext context
            // , IMapper mapper
-            , IQueryDispatcher queryDispatcher
-            , ICommandDispatcher commandDispatcher
+            //, IQueryDispatcher queryDispatcher
+            //, ICommandDispatcher commandDispatcher
             , SignInManager<AppUser> signInManager
             , UserManager<AppUser> userManager
             , IConfiguration config
-        ) : base(logger, context, /*mapper, */queryDispatcher, commandDispatcher, signInManager, userManager, config)
+        ) : base(logger, context, /*mapper, queryDispatcher, commandDispatcher,*/ signInManager, userManager, config)
         {
 
         }
@@ -32,6 +32,7 @@ namespace Kadry.Web.Controllers
         #region Views
         public IActionResult List()
         {
+            
             var model = new KadryRepository<CountryDb>(_context).GetAll();
             return View(model);
         }
