@@ -20,15 +20,15 @@
             <th scope="col">Sort</th>
             <th scope="col">Nazwa</th>
             <th scope="col">Opis</th>
-
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var obj in Model)
         {
-            <tr>
+            <tr class="tableRow">
                 <th scope="row">@(i=i+1)</th>
-                <td>@obj.Id</td>
+                <td >@obj.Id</td>
                 <td>@obj.Sort </td>
                 <td>@obj.Name</td>
                 <td>@obj.Description</td>
@@ -38,3 +38,15 @@
             @*@(i=i++)*@
         }
 </table>
+
+<style>
+
+    .tableRow {
+        background-color: powderblue;
+        transition: background-color .5s;
+    }
+
+    .tableRow:hover {
+        background-color: aqua;
+    }
+</style>
