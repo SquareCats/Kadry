@@ -1,4 +1,5 @@
 ﻿using Kadry.Db;
+using Kadry.Db.Data;
 using Kadry.Web.Data.Context;
 using Kadry.Web.Data.Repository;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +51,32 @@ namespace Kadry.Web.Data.SeedData
             SeedCountries(user);
             SeedCurrency(user);
             SeedLogLevel(user);
+            SeedPersons(user);
         }
+
+        private void SeedPersons(AppUser user)
+        {
+            var personRepository = new KadryRepository<PersonDb>(ctx);
+            if (!personRepository.GetAll().Any())
+            {
+                personRepository.InsertRange(
+                    new List<PersonDb>
+                    {
+                        new PersonDb{ Name="Kowalski", FirstName="Jan" , DateOfBirth=new DateTime(1976,2,2), CreatedBy=user, SocialNumber="11111111119", CreatedOn=DateTime.Now }
+                    }
+                    );
+                ctx.Database.OpenConnection();
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                finally
+                {
+                    ctx.Database.CloseConnection();
+                }
+            }
+        }
+
         private void SeedCountries(AppUser user)
         {
             var countryRepository = new KadryRepository<CountryDb>(ctx);

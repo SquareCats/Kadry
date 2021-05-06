@@ -86,6 +86,10 @@ namespace Kadry.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            using (var context = scope.ServiceProvider.GetService<KadryDbContext>())
+                context.Database.Migrate();
         }
     }
 }

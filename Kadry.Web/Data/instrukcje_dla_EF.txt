@@ -15,3 +15,6 @@ dotnet ef database update
 
 lista migracji:
 dotnet ef migrations list
+
+dotnet ef database update PersonTableAdded
+add-migration <name of migration>

@@ -13,562 +13,624 @@ namespace Kadry.Web.Data.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.5")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //#pragma warning disable 612, 618
+            //            modelBuilder
+            //                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+            //                .HasAnnotation("ProductVersion", "5.0.5")
+            //                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Kadry.Db.AppUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+            //            modelBuilder.Entity("Kadry.Db.AppUser", b =>
+            //                {
+            //                    b.Property<string>("Id")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+            //                    b.Property<int>("AccessFailedCount")
+            //                        .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("ConcurrencyStamp")
+            //                        .IsConcurrencyToken()
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            //                    b.Property<string>("Email")
+            //                        .HasMaxLength(256)
+            //                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+            //                    b.Property<bool>("EmailConfirmed")
+            //                        .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("FirstName")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("LastName")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+            //                    b.Property<bool>("LockoutEnabled")
+            //                        .HasColumnType("bit");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+            //                    b.Property<DateTimeOffset?>("LockoutEnd")
+            //                        .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            //                    b.Property<string>("NormalizedEmail")
+            //                        .HasMaxLength(256)
+            //                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            //                    b.Property<string>("NormalizedUserName")
+            //                        .HasMaxLength(256)
+            //                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("PasswordHash")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("PhoneNumber")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+            //                    b.Property<bool>("PhoneNumberConfirmed")
+            //                        .HasColumnType("bit");
 
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("SecurityStamp")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+            //                    b.Property<bool>("TwoFactorEnabled")
+            //                        .HasColumnType("bit");
 
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            //                    b.Property<string>("UserName")
+            //                        .HasMaxLength(256)
+            //                        .HasColumnType("nvarchar(256)");
 
-                    b.HasKey("Id");
+            //                    b.HasKey("Id");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
+            //                    b.HasIndex("NormalizedEmail")
+            //                        .HasDatabaseName("EmailIndex");
 
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+            //                    b.HasIndex("NormalizedUserName")
+            //                        .IsUnique()
+            //                        .HasDatabaseName("UserNameIndex")
+            //                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers");
-                });
+            //                    b.ToTable("AspNetUsers");
+            //                });
 
-            modelBuilder.Entity("Kadry.Db.CountryDb", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //            modelBuilder.Entity("Kadry.Db.CountryDb", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("ChangedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<DateTime?>("ChangedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("ChengedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("CreatedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<DateTime>("CreatedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("Description")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+            //                    b.Property<string>("Name")
+            //                        .IsRequired()
+            //                        .HasMaxLength(255)
+            //                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("ObjectGuid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            //                    b.Property<Guid>("ObjectGuid")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Sort")
-                        .HasColumnType("int");
+            //                    b.Property<int>("Sort")
+            //                        .HasColumnType("int");
 
-                    b.HasKey("Id");
+            //                    b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+            //                    b.HasIndex("ChengedById");
 
-                    b.HasIndex("CreatedById");
+            //                    b.HasIndex("CreatedById");
 
-                    b.ToTable("CountryDictionary", "dbo");
-                });
+            //                    b.ToTable("CountryDictionary", "dbo");
+            //                });
 
-            modelBuilder.Entity("Kadry.Db.CurrencyDb", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //            modelBuilder.Entity("Kadry.Db.CurrencyDb", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("ChangedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<DateTime?>("ChangedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("ChengedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("CreatedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<DateTime>("CreatedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("Description")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+            //                    b.Property<string>("Name")
+            //                        .IsRequired()
+            //                        .HasMaxLength(255)
+            //                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<Guid>("ObjectGuid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            //                    b.Property<Guid>("ObjectGuid")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Sort")
-                        .HasColumnType("int");
+            //                    b.Property<int>("Sort")
+            //                        .HasColumnType("int");
 
-                    b.HasKey("Id");
+            //                    b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+            //                    b.HasIndex("ChengedById");
 
-                    b.HasIndex("CreatedById");
+            //                    b.HasIndex("CreatedById");
 
-                    b.ToTable("CurrencyDictionary", "dbo");
-                });
+            //                    b.ToTable("CurrencyDictionary", "dbo");
+            //                });
 
-            modelBuilder.Entity("Kadry.Db.LevelDictionaryDb", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //            modelBuilder.Entity("Kadry.Db.Data.Person", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("ChangedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<DateTime?>("ChangedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("ChengedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("CreatedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<DateTime>("CreatedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+            //                    b.Property<DateTime>("DateOfBirth")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ObjectGuid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            //                    b.Property<string>("FirstName")
+            //                        .HasMaxLength(50)
+            //                        .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+            //                    b.Property<string>("Name")
+            //                        .HasMaxLength(60)
+            //                        .HasColumnType("nvarchar(60)");
 
-                    b.HasIndex("ChengedById");
+            //                    b.Property<Guid>("ObjectGuid")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("uniqueidentifier");
 
-                    b.HasIndex("CreatedById");
+            //                    b.Property<string>("SocialNumber")
+            //                        .HasMaxLength(11)
+            //                        .HasColumnType("nvarchar(11)");
 
-                    b.ToTable("LevelDictionary", "dbo");
-                });
+            //                    b.HasKey("Id");
 
-            modelBuilder.Entity("Kadry.Db.LogActivitiesDb", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //                    b.HasIndex("ChengedById");
 
-                    b.Property<DateTime?>("ChangedOn")
-                        .HasColumnType("datetime2");
+            //                    b.HasIndex("CreatedById");
 
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.ToTable("Person", "Hr");
+            //                });
 
-                    b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+            //            modelBuilder.Entity("Kadry.Db.LevelDictionaryDb", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<DateTime?>("ChangedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("ChengedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("Level")
-                        .HasMaxLength(100)
-                        .HasColumnType("int");
+            //                    b.Property<string>("CreatedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+            //                    b.Property<DateTime>("CreatedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ObjectGuid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            //                    b.Property<string>("Name")
+            //                        .IsRequired()
+            //                        .HasMaxLength(100)
+            //                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("Sort")
-                        .HasColumnType("int");
+            //                    b.Property<Guid>("ObjectGuid")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+            //                    b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+            //                    b.HasIndex("ChengedById");
 
-                    b.HasIndex("CreatedById");
+            //                    b.HasIndex("CreatedById");
 
-                    b.ToTable("LogActivitiesDictionary", "dbo");
-                });
+            //                    b.ToTable("LevelDictionary", "dbo");
+            //                });
 
-            modelBuilder.Entity("Kadry.Db.LogDb", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //            modelBuilder.Entity("Kadry.Db.LogActivitiesDb", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ActivityId")
-                        .HasColumnType("int");
+            //                    b.Property<DateTime?>("ChangedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ActivityTime")
-                        .HasColumnType("datetime2");
+            //                    b.Property<string>("ChengedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("ChangedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<string>("CreatedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<DateTime>("CreatedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("CreatedById")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("Description")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+            //                    b.Property<int>("Level")
+            //                        .HasMaxLength(100)
+            //                        .HasColumnType("int");
 
-                    b.Property<string>("Details")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("Name")
+            //                        .IsRequired()
+            //                        .HasMaxLength(255)
+            //                        .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Host")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<Guid>("ObjectGuid")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ObjectGuid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            //                    b.Property<int>("Sort")
+            //                        .HasColumnType("int");
 
-                    b.HasKey("Id");
+            //                    b.HasKey("Id");
 
-                    b.HasIndex("ActivityId");
+            //                    b.HasIndex("ChengedById");
 
-                    b.HasIndex("ChengedById");
+            //                    b.HasIndex("CreatedById");
 
-                    b.HasIndex("CreatedById");
+            //                    b.ToTable("LogActivitiesDictionary", "dbo");
+            //                });
 
-                    b.ToTable("LogDb");
-                });
+            //            modelBuilder.Entity("Kadry.Db.LogDb", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<int?>("ActivityId")
+            //                        .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<DateTime>("ActivityTime")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            //                    b.Property<DateTime?>("ChangedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+            //                    b.Property<string>("ChengedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+            //                    b.Property<string>("CreatedById")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+            //                    b.Property<DateTime>("CreatedOn")
+            //                        .HasColumnType("datetime2");
 
-                    b.ToTable("AspNetRoles");
-                });
+            //                    b.Property<string>("Details")
+            //                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //                    b.Property<string>("Host")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<Guid>("ObjectGuid")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.HasKey("Id");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+            //                    b.HasIndex("ActivityId");
 
-                    b.HasKey("Id");
+            //                    b.HasIndex("ChengedById");
 
-                    b.HasIndex("RoleId");
+            //                    b.HasIndex("CreatedById");
 
-                    b.ToTable("AspNetRoleClaims");
-                });
+            //                    b.ToTable("LogDb");
+            //                });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            //                {
+            //                    b.Property<string>("Id")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("ConcurrencyStamp")
+            //                        .IsConcurrencyToken()
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("Name")
+            //                        .HasMaxLength(256)
+            //                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("NormalizedName")
+            //                        .HasMaxLength(256)
+            //                        .HasColumnType("nvarchar(256)");
 
-                    b.HasKey("Id");
+            //                    b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+            //                    b.HasIndex("NormalizedName")
+            //                        .IsUnique()
+            //                        .HasDatabaseName("RoleNameIndex")
+            //                        .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetUserClaims");
-                });
+            //                    b.ToTable("AspNetRoles");
+            //                });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("ClaimType")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("ClaimValue")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("RoleId")
+            //                        .IsRequired()
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("LoginProvider", "ProviderKey");
+            //                    b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+            //                    b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserLogins");
-                });
+            //                    b.ToTable("AspNetRoleClaims");
+            //                });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            //                {
+            //                    b.Property<int>("Id")
+            //                        .ValueGeneratedOnAdd()
+            //                        .HasColumnType("int")
+            //                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.Property<string>("ClaimType")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId", "RoleId");
+            //                    b.Property<string>("ClaimValue")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("RoleId");
+            //                    b.Property<string>("UserId")
+            //                        .IsRequired()
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.ToTable("AspNetUserRoles");
-                });
+            //                    b.HasKey("Id");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.HasIndex("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+            //                    b.ToTable("AspNetUserClaims");
+            //                });
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            //                {
+            //                    b.Property<string>("LoginProvider")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+            //                    b.Property<string>("ProviderKey")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("UserId", "LoginProvider", "Name");
+            //                    b.Property<string>("ProviderDisplayName")
+            //                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("AspNetUserTokens");
-                });
+            //                    b.Property<string>("UserId")
+            //                        .IsRequired()
+            //                        .HasColumnType("nvarchar(450)");
 
-            modelBuilder.Entity("Kadry.Db.CountryDb", b =>
-                {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
-                        .WithMany()
-                        .HasForeignKey("ChengedById");
+            //                    b.HasKey("LoginProvider", "ProviderKey");
 
-                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
+            //                    b.HasIndex("UserId");
 
-                    b.Navigation("ChengedBy");
+            //                    b.ToTable("AspNetUserLogins");
+            //                });
 
-                    b.Navigation("CreatedBy");
-                });
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            //                {
+            //                    b.Property<string>("UserId")
+            //                        .HasColumnType("nvarchar(450)");
 
-            modelBuilder.Entity("Kadry.Db.CurrencyDb", b =>
-                {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
-                        .WithMany()
-                        .HasForeignKey("ChengedById");
+            //                    b.Property<string>("RoleId")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
+            //                    b.HasKey("UserId", "RoleId");
 
-                    b.Navigation("ChengedBy");
+            //                    b.HasIndex("RoleId");
 
-                    b.Navigation("CreatedBy");
-                });
+            //                    b.ToTable("AspNetUserRoles");
+            //                });
 
-            modelBuilder.Entity("Kadry.Db.LevelDictionaryDb", b =>
-                {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
-                        .WithMany()
-                        .HasForeignKey("ChengedById");
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            //                {
+            //                    b.Property<string>("UserId")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
+            //                    b.Property<string>("LoginProvider")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Navigation("ChengedBy");
+            //                    b.Property<string>("Name")
+            //                        .HasColumnType("nvarchar(450)");
 
-                    b.Navigation("CreatedBy");
-                });
+            //                    b.Property<string>("Value")
+            //                        .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("Kadry.Db.LogActivitiesDb", b =>
-                {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
-                        .WithMany()
-                        .HasForeignKey("ChengedById");
+            //                    b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
+            //                    b.ToTable("AspNetUserTokens");
+            //                });
 
-                    b.Navigation("ChengedBy");
+            //            modelBuilder.Entity("Kadry.Db.CountryDb", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("ChengedById");
 
-                    b.Navigation("CreatedBy");
-                });
+            //                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("CreatedById");
 
-            modelBuilder.Entity("Kadry.Db.LogDb", b =>
-                {
-                    b.HasOne("Kadry.Db.LogActivitiesDb", "Activity")
-                        .WithMany()
-                        .HasForeignKey("ActivityId");
+            //                    b.Navigation("ChengedBy");
 
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
-                        .WithMany()
-                        .HasForeignKey("ChengedById");
+            //                    b.Navigation("CreatedBy");
+            //                });
 
-                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
+            //            modelBuilder.Entity("Kadry.Db.CurrencyDb", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("ChengedById");
 
-                    b.Navigation("Activity");
+            //                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("CreatedById");
 
-                    b.Navigation("ChengedBy");
+            //                    b.Navigation("ChengedBy");
 
-                    b.Navigation("CreatedBy");
-                });
+            //                    b.Navigation("CreatedBy");
+            //                });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            //            modelBuilder.Entity("Kadry.Db.Data.Person", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("ChengedById");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.HasOne("Kadry.Db.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            //                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("CreatedById");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.HasOne("Kadry.Db.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            //                    b.Navigation("ChengedBy");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            //                    b.Navigation("CreatedBy");
+            //                });
 
-                    b.HasOne("Kadry.Db.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            //            modelBuilder.Entity("Kadry.Db.LevelDictionaryDb", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("ChengedById");
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("Kadry.Db.AppUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-#pragma warning restore 612, 618
+            //                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("CreatedById");
+
+            //                    b.Navigation("ChengedBy");
+
+            //                    b.Navigation("CreatedBy");
+            //                });
+
+            //            modelBuilder.Entity("Kadry.Db.LogActivitiesDb", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("ChengedById");
+
+            //                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("CreatedById");
+
+            //                    b.Navigation("ChengedBy");
+
+            //                    b.Navigation("CreatedBy");
+            //                });
+
+            //            modelBuilder.Entity("Kadry.Db.LogDb", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.LogActivitiesDb", "Activity")
+            //                        .WithMany()
+            //                        .HasForeignKey("ActivityId");
+
+            //                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("ChengedById");
+
+            //                    b.HasOne("Kadry.Db.AppUser", "CreatedBy")
+            //                        .WithMany()
+            //                        .HasForeignKey("CreatedById");
+
+            //                    b.Navigation("Activity");
+
+            //                    b.Navigation("ChengedBy");
+
+            //                    b.Navigation("CreatedBy");
+            //                });
+
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            //                {
+            //                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+            //                        .WithMany()
+            //                        .HasForeignKey("RoleId")
+            //                        .OnDelete(DeleteBehavior.Cascade)
+            //                        .IsRequired();
+            //                });
+
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", null)
+            //                        .WithMany()
+            //                        .HasForeignKey("UserId")
+            //                        .OnDelete(DeleteBehavior.Cascade)
+            //                        .IsRequired();
+            //                });
+
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", null)
+            //                        .WithMany()
+            //                        .HasForeignKey("UserId")
+            //                        .OnDelete(DeleteBehavior.Cascade)
+            //                        .IsRequired();
+            //                });
+
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            //                {
+            //                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+            //                        .WithMany()
+            //                        .HasForeignKey("RoleId")
+            //                        .OnDelete(DeleteBehavior.Cascade)
+            //                        .IsRequired();
+
+            //                    b.HasOne("Kadry.Db.AppUser", null)
+            //                        .WithMany()
+            //                        .HasForeignKey("UserId")
+            //                        .OnDelete(DeleteBehavior.Cascade)
+            //                        .IsRequired();
+            //                });
+
+            //            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            //                {
+            //                    b.HasOne("Kadry.Db.AppUser", null)
+            //                        .WithMany()
+            //                        .HasForeignKey("UserId")
+            //                        .OnDelete(DeleteBehavior.Cascade)
+            //                        .IsRequired();
+            //                });
+            //#pragma warning restore 612, 618
+                    }
         }
-    }
 }
