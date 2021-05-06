@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Kadry.Web
@@ -47,10 +48,42 @@ namespace Kadry.Web
             //    .AddEntityFrameworkStores<KadryDbContext>();
             services.AddScoped<IRepository<MyEntity>, KadryRepository<MyEntity>>();
 
+            services.AddScoped<DbContextOptionsBuilder>();
+            //var provider = services.BuildServiceProvider();
+            //services.add<IServiceProvider, ServiceProvider>();
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
             services.AddScoped<IQueryDispatcher, QueryDispatcher>();
+
+            //Register Commands
+            Assembly.GetExecutingAssembly()
+           .GetTypes()
+           .Where(item => item.GetInterfaces()
+           .Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == typeof(ICommandHandler<>)) && !item.IsAbstract && !item.IsInterface)
+           .ToList()
+           .ForEach(assignedTypes =>
+           {
+               var serviceType = assignedTypes.GetInterfaces().First(i => i.GetGenericTypeDefinition() == typeof(ICommandHandler<>));
+               services.AddScoped(serviceType, assignedTypes);
+           });
+            //Register Queries
+            Assembly.GetExecutingAssembly()
+           .GetTypes()
+           .Where(item => item.GetInterfaces()
+           .Where(i => i.IsGenericType).Any(i => i.GetGenericTypeDefinition() == typeof(IQueryHandler<,>)) && !item.IsAbstract && !item.IsInterface)
+           .ToList()
+           .ForEach(assignedTypes =>
+           {
+               var serviceType = assignedTypes.GetInterfaces().First(i => i.GetGenericTypeDefinition() == typeof(IQueryHandler<,>));
+               services.AddScoped(serviceType, assignedTypes);
+           });
+
             //Add seeder Class
             services.AddTransient<KadrySeeder>();
+
+
+            //Configure Automapper
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 
             services.AddControllersWithViews();
             services.AddRazorPages();
