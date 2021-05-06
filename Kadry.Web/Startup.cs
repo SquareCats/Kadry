@@ -51,6 +51,7 @@ namespace Kadry.Web
             services.AddScoped<DbContextOptionsBuilder>();
             //var provider = services.BuildServiceProvider();
             //services.add<IServiceProvider, ServiceProvider>();
+            services.AddSingleton<IServiceProvider>(w => services.BuildServiceProvider());
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
             services.AddScoped<IQueryDispatcher, QueryDispatcher>();
 
