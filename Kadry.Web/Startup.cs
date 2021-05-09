@@ -5,18 +5,15 @@ using Kadry.Web.Data.Repository;
 using Kadry.Web.Data.SeedData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
+
 
 namespace Kadry.Web
 {
@@ -51,10 +48,10 @@ namespace Kadry.Web
             services.AddScoped<DbContextOptionsBuilder>();
             //var provider = services.BuildServiceProvider();
             //services.add<IServiceProvider, ServiceProvider>();
-            services.AddSingleton<IServiceProvider>(w => services.BuildServiceProvider());
-            services.AddScoped<ICommandDispatcher, CommandDispatcher>();
-            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
-
+            
+            services.AddTransient<ICommandDispatcher, CommandDispatcher>();
+            services.AddTransient<IQueryDispatcher, QueryDispatcher>();
+            
             //Register Commands
             Assembly.GetExecutingAssembly()
            .GetTypes()
@@ -83,12 +80,12 @@ namespace Kadry.Web
 
 
             //Configure Automapper
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
             services.AddControllersWithViews();
             services.AddRazorPages();
-            //object p = services.AddMvc().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            object p = services.AddMvc().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,6 +121,13 @@ namespace Kadry.Web
             using (var scope = app.ApplicationServices.CreateScope())
             using (var context = scope.ServiceProvider.GetService<KadryDbContext>())
                 context.Database.Migrate();
+
+            //using (var scope = app.ApplicationServices.CreateScope())
+            //{
+            //    var cd = scope.ServiceProvider.GetService<ICommandDispatcher>();
+            //    var a = cd.ErrorMessage;
+            //}
+            
         }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-//using AutoMapper;
 using CQRS;
 using Kadry.Db;
 using Kadry.Web.Data.Context;
-using Kadry.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Kadry.Web.Data.Repository;
+using AutoMapper;
 
 namespace Kadry.Web.Controllers
 {
@@ -17,13 +16,13 @@ namespace Kadry.Web.Controllers
         #region constructor
         public CountryController(ILogger<CountryController> logger
             , KadryDbContext context
-           // , IMapper mapper
-            //, IQueryDispatcher queryDispatcher
-            //, ICommandDispatcher commandDispatcher
+             , IMapper mapper
+            , IQueryDispatcher queryDispatcher
+            , ICommandDispatcher commandDispatcher
             , SignInManager<AppUser> signInManager
             , UserManager<AppUser> userManager
             , IConfiguration config
-        ) : base(logger, context, /*mapper, queryDispatcher, commandDispatcher,*/ signInManager, userManager, config)
+        ) : base(logger, context, mapper, queryDispatcher, commandDispatcher, signInManager, userManager, config)
         {
 
         }
