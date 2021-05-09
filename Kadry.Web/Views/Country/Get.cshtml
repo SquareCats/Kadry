@@ -1,0 +1,59 @@
+﻿@model Kadry.Web.Models.BusinessLogicViewModel.CountryViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<h4>CountryViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedOn" class="control-label"></label>
+                <input asp-for="CreatedOn" class="form-control" />
+                <span asp-validation-for="CreatedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChengedBy" class="control-label"></label>
+                <input asp-for="ChengedBy" class="form-control" />
+                <span asp-validation-for="ChengedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangedOn" class="control-label"></label>
+                <input asp-for="ChangedOn" class="form-control" />
+                <span asp-validation-for="ChangedOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ObjectGuid" class="control-label"></label>
+                <input asp-for="ObjectGuid" class="form-control" />
+                <span asp-validation-for="ObjectGuid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Country" asp-action="List">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
