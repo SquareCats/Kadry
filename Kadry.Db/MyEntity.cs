@@ -12,7 +12,7 @@ namespace Kadry.Db
         public int Id { get; set; }
         public AppUser CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
-        public AppUser? ChengedBy { get; set; }
+        public AppUser ChangedBy { get; set; }
         public DateTime? ChangedOn { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         
@@ -25,7 +25,7 @@ namespace Kadry.Db
         int Id { get; set; }
         AppUser CreatedBy { get; set; }
         DateTime CreatedOn { get; set; }
-        AppUser? ChengedBy { get; set; }
+        AppUser ChangedBy { get; set; }
         DateTime? ChangedOn { get; set; }
         public Guid ObjectGuid { get; set; }
     }

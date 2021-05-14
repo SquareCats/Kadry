@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Kadry.Db
 {
     [Table("LogActivitiesDictionary", Schema = "dbo")]
-    public class LogActivitiesDb : Dictionary
+    public class LogActivitiesDb : DictionaryDb
     {
 
         [StringLength(100)]

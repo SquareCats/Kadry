@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Kadry.Db
 {
     [Table("CurrencyDictionary", Schema = "dbo")]
-    public class CurrencyDb : Dictionary
+    public class CurrencyDb : DictionaryDb
     {
       
     }

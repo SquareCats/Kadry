@@ -2,7 +2,7 @@
 
 namespace Kadry.Db
 {
-    public abstract class Dictionary : MyEntity
+    public abstract class DictionaryDb : MyEntity
     {
         public int Sort { get; set; }
         [StringLength(255)]
