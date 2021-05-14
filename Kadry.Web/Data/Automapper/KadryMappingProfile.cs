@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Kadry.Db;
+using Kadry.Web.Models;
 using Kadry.Web.Models.BusinessLogicViewModel;
+using Kadry.Web.Models.Dictionaries;
 
 namespace Kadry.Web.Data.AutoMapper
 {
@@ -19,8 +21,13 @@ namespace Kadry.Web.Data.AutoMapper
 
         public KadryMappingProfile()
         {
+            CreateMap<AppUser, AppUserViewModel>().ReverseMap();
+            CreateMap<DictionaryDb, DictionaryBaseViewModel>().ReverseMap();
             CreateMap<CountryDb, CountryViewModel>().ReverseMap();
-           
+            
+       //     AutoMapper.Mapper.CreateMap<ReferenceEngine, Engine>()
+       //.ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description)).ReverseMap();
+
         }
     }
 }
