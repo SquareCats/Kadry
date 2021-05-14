@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Kadry.Web.Models.BusinessLogicViewModel;
+using Kadry.Web.Models.Dictionaries;
 
 namespace Kadry.Web.Data.Context
 {
@@ -44,6 +44,6 @@ namespace Kadry.Web.Data.Context
                 entityMethod.MakeGenericMethod(entityType).Invoke(modelBuider, new object[] { });
             }
         }
-        public DbSet<Kadry.Web.Models.BusinessLogicViewModel.CountryViewModel> CountryViewModel { get; set; }
+        public DbSet<Kadry.Web.Models.Dictionaries.CountryViewModel> CountryViewModel { get; set; }
     }
 }
