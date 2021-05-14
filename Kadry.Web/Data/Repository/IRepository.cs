@@ -18,5 +18,6 @@ namespace Kadry.Web.Data.Repository
         DbSet<T> Table { get; set; }
         void InsertRange(IEnumerable<T> obj);
         IQueryable<T> GetQuerableTable();
+        void Attache(T entity);
     }
 }

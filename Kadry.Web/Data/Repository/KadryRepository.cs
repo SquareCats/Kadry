@@ -59,7 +59,15 @@ namespace Kadry.Web.Data.Repository
         {
             return Table.Find(id);
         }
-
+        public void Attache(T entity)
+        {
+            entity.ChangedOn = DateTime.Now;
+            entity.ChangedBy = _user;
+            Table = _context.Set<T>();
+            Table.Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            return;
+        }
         public void Insert(T obj)
         {
             obj.CreatedBy = _user;
@@ -92,7 +100,7 @@ namespace Kadry.Web.Data.Repository
             Table.Attach(obj);
 
             obj.ChangedOn = DateTime.Now;
-            obj.ChengedBy = _user;
+            obj.ChangedBy = _user;
             _context.Entry(obj).State = EntityState.Modified;
         }
 
