@@ -7,7 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Kadry.Web.Data.Repository;
 using AutoMapper;
-using Kadry.Web.Models.BusinessLogicViewModel;
+using Kadry.Web.Models.Dictionaries;
+using System.Collections.Generic;
+using Kadry.Web.Models;
 
 namespace Kadry.Web.Controllers
 {
@@ -29,12 +31,15 @@ namespace Kadry.Web.Controllers
         }
         #endregion
 
+        
+
         #region Views
         public IActionResult List()
         {
-            
-            var model = new KadryRepository<CountryDb>(_context).GetAll();
-            return View(model);
+            //var listDb = new KadryRepository<CountryDb>(_context).GetAll();
+            //var model = mapper.Map<IEnumerable<CountryDb>, IEnumerable<CountryViewModel>>(listDb);
+            var list = _getViewModelList<CountryDb, CountryViewModel>();
+            return View(list);
         }
         public IActionResult Get(int id)
         {
@@ -42,6 +47,18 @@ namespace Kadry.Web.Controllers
             var model = mapper.Map<CountryDb, CountryViewModel>(dbObject);
             return View(model);
         }
+        [HttpPost]
+        public IActionResult Get(CountryViewModel countryVm)
+        {
+            var dbModel = mapper.Map<CountryViewModel, CountryDb>(countryVm);
+            var repo = new KadryRepository<CountryDb>(_context);
+            repo.Attache(dbModel);
+            repo.Save();
+            var list = _getViewModelList<CountryDb, CountryViewModel>();
+            return View("List", list);
+
+        }
         #endregion
+
     }
 }

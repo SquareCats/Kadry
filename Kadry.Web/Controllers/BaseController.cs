@@ -3,11 +3,13 @@ using AutoMapper;
 using CQRS;
 using Kadry.Db;
 using Kadry.Web.Data.Context;
+using Kadry.Web.Data.Repository;
 using Kadry.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 
@@ -53,6 +55,13 @@ namespace Kadry.Web.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        protected IEnumerable<Q> _getViewModelList<T, Q>() where T:MyEntity where Q:BaseViewModel
+        {
+            var listDb = new KadryRepository<T>(_context).GetAll();
+            var model = mapper.Map< IEnumerable<MyEntity> , IEnumerable<Q>>(listDb);
+            return model;
         }
     }
 
