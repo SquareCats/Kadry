@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Kadry.Web.Data.Migrations
+namespace Kadry.Web.Migrations
 {
     [DbContext(typeof(KadryDbContext))]
-    [Migration("20210514133855_202105141530_ChangedAppUserFieldNameToChangedByFromChengedBy")]
-    partial class _202105141530_ChangedAppUserFieldNameToChangedByFromChengedBy
+    [Migration("20210519114825_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -355,68 +355,6 @@ namespace Kadry.Web.Data.Migrations
                     b.ToTable("LogDb");
                 });
 
-            modelBuilder.Entity("Kadry.Web.Models.BusinessLogicViewModel.AppUserViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AppUserViewModel");
-                });
-
-            modelBuilder.Entity("Kadry.Web.Models.Dictionaries.CountryViewModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ChangedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ChangedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CreatedById")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("ObjectGuid")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Sort")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ChangedById");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("CountryViewModel");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -638,21 +576,6 @@ namespace Kadry.Web.Data.Migrations
                         .HasForeignKey("CreatedById");
 
                     b.Navigation("Activity");
-
-                    b.Navigation("ChangedBy");
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("Kadry.Web.Models.Dictionaries.CountryViewModel", b =>
-                {
-                    b.HasOne("Kadry.Web.Models.BusinessLogicViewModel.AppUserViewModel", "ChangedBy")
-                        .WithMany()
-                        .HasForeignKey("ChangedById");
-
-                    b.HasOne("Kadry.Web.Models.BusinessLogicViewModel.AppUserViewModel", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
 
                     b.Navigation("ChangedBy");
 

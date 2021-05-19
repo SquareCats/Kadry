@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Kadry.Web.Models.Dictionaries;
+using Kadry.Web.Models;
 
 namespace Kadry.Web.Data.Context
 {
@@ -37,13 +38,17 @@ namespace Kadry.Web.Data.Context
                 );
             var entityMethod = entityMethodCollection.FirstOrDefault();
 
-            var entityTypes = Assembly.GetAssembly(typeof(MyEntity)).GetTypes().Where(x => x.IsSubclassOf(typeof(MyEntity)) && !x.IsAbstract);
+            var entityTypes = Assembly.GetAssembly(typeof(MyEntity)).GetTypes().Where(x => (x.IsSubclassOf(typeof(MyEntity)) && !x.IsSubclassOf(typeof(BaseViewModel))) 
+                                && !x.IsAbstract 
+                               
+
+                                );
 
             foreach (var entityType in entityTypes)
             {
                 entityMethod.MakeGenericMethod(entityType).Invoke(modelBuider, new object[] { });
             }
         }
-        public DbSet<Kadry.Web.Models.Dictionaries.CountryViewModel> CountryViewModel { get; set; }
+        
     }
 }

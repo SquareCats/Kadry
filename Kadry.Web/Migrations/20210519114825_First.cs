@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Kadry.Web.Data.Migrations
+namespace Kadry.Web.Migrations
 {
-    public partial class _202105141530_ChangedAppUserFieldNameToChangedByFromChengedBy : Migration
+    public partial class First : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,33 +14,18 @@ namespace Kadry.Web.Data.Migrations
                 name: "Hr");
 
             migrationBuilder.CreateTable(
-                name: "AppUserViewModel",
+                name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AppUserViewModel", x => x.Id);
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 });
-
-            //migrationBuilder.CreateTable(
-            //    name: "AspNetRoles",
-            //    columns: table => new
-            //    {
-            //        Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-            //        Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-            //        NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-            //        ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
-            //    },
-            //    constraints: table =>
-            //    {
-            //        table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-            //    });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
@@ -67,38 +52,6 @@ namespace Kadry.Web.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CountryViewModel",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedById = table.Column<int>(type: "int", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ChangedById = table.Column<int>(type: "int", nullable: true),
-                    ChangedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ObjectGuid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Sort = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CountryViewModel", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CountryViewModel_AppUserViewModel_ChangedById",
-                        column: x => x.ChangedById,
-                        principalTable: "AppUserViewModel",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_CountryViewModel_AppUserViewModel_CreatedById",
-                        column: x => x.CreatedById,
-                        principalTable: "AppUserViewModel",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -464,16 +417,6 @@ namespace Kadry.Web.Data.Migrations
                 column: "CreatedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CountryViewModel_ChangedById",
-                table: "CountryViewModel",
-                column: "ChangedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CountryViewModel_CreatedById",
-                table: "CountryViewModel",
-                column: "CreatedById");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CurrencyDictionary_ChangedById",
                 schema: "dbo",
                 table: "CurrencyDictionary",
@@ -559,9 +502,6 @@ namespace Kadry.Web.Data.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "CountryViewModel");
-
-            migrationBuilder.DropTable(
                 name: "CurrencyDictionary",
                 schema: "dbo");
 
@@ -578,9 +518,6 @@ namespace Kadry.Web.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AppUserViewModel");
 
             migrationBuilder.DropTable(
                 name: "LogActivitiesDictionary",

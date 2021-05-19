@@ -4,16 +4,14 @@ using Kadry.Web.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Kadry.Web.Data.Migrations
+namespace Kadry.Web.Migrations
 {
     [DbContext(typeof(KadryDbContext))]
-    [Migration("20210506090311_PersonTableAdded")]
-    partial class PersonTableAdded
+    partial class KadryDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,11 +97,11 @@ namespace Kadry.Web.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ChangedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("ChangedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
@@ -128,7 +126,7 @@ namespace Kadry.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+                    b.HasIndex("ChangedById");
 
                     b.HasIndex("CreatedById");
 
@@ -142,11 +140,11 @@ namespace Kadry.Web.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ChangedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("ChangedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
@@ -171,25 +169,25 @@ namespace Kadry.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+                    b.HasIndex("ChangedById");
 
                     b.HasIndex("CreatedById");
 
                     b.ToTable("CurrencyDictionary", "dbo");
                 });
 
-            modelBuilder.Entity("Kadry.Db.Data.Person", b =>
+            modelBuilder.Entity("Kadry.Db.Data.PersonDb", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ChangedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("ChangedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
@@ -218,7 +216,7 @@ namespace Kadry.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+                    b.HasIndex("ChangedById");
 
                     b.HasIndex("CreatedById");
 
@@ -232,11 +230,11 @@ namespace Kadry.Web.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ChangedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("ChangedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
@@ -255,7 +253,7 @@ namespace Kadry.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+                    b.HasIndex("ChangedById");
 
                     b.HasIndex("CreatedById");
 
@@ -269,11 +267,11 @@ namespace Kadry.Web.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ChangedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("ChangedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
@@ -302,7 +300,7 @@ namespace Kadry.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChengedById");
+                    b.HasIndex("ChangedById");
 
                     b.HasIndex("CreatedById");
 
@@ -322,11 +320,11 @@ namespace Kadry.Web.Data.Migrations
                     b.Property<DateTime>("ActivityTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ChangedById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("ChangedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ChengedById")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
@@ -348,7 +346,7 @@ namespace Kadry.Web.Data.Migrations
 
                     b.HasIndex("ActivityId");
 
-                    b.HasIndex("ChengedById");
+                    b.HasIndex("ChangedById");
 
                     b.HasIndex("CreatedById");
 
@@ -488,75 +486,75 @@ namespace Kadry.Web.Data.Migrations
 
             modelBuilder.Entity("Kadry.Db.CountryDb", b =>
                 {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+                    b.HasOne("Kadry.Db.AppUser", "ChangedBy")
                         .WithMany()
-                        .HasForeignKey("ChengedById");
+                        .HasForeignKey("ChangedById");
 
                     b.HasOne("Kadry.Db.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.Navigation("ChengedBy");
+                    b.Navigation("ChangedBy");
 
                     b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("Kadry.Db.CurrencyDb", b =>
                 {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+                    b.HasOne("Kadry.Db.AppUser", "ChangedBy")
                         .WithMany()
-                        .HasForeignKey("ChengedById");
+                        .HasForeignKey("ChangedById");
 
                     b.HasOne("Kadry.Db.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.Navigation("ChengedBy");
+                    b.Navigation("ChangedBy");
 
                     b.Navigation("CreatedBy");
                 });
 
-            modelBuilder.Entity("Kadry.Db.Data.Person", b =>
+            modelBuilder.Entity("Kadry.Db.Data.PersonDb", b =>
                 {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+                    b.HasOne("Kadry.Db.AppUser", "ChangedBy")
                         .WithMany()
-                        .HasForeignKey("ChengedById");
+                        .HasForeignKey("ChangedById");
 
                     b.HasOne("Kadry.Db.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.Navigation("ChengedBy");
+                    b.Navigation("ChangedBy");
 
                     b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("Kadry.Db.LevelDictionaryDb", b =>
                 {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+                    b.HasOne("Kadry.Db.AppUser", "ChangedBy")
                         .WithMany()
-                        .HasForeignKey("ChengedById");
+                        .HasForeignKey("ChangedById");
 
                     b.HasOne("Kadry.Db.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.Navigation("ChengedBy");
+                    b.Navigation("ChangedBy");
 
                     b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("Kadry.Db.LogActivitiesDb", b =>
                 {
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+                    b.HasOne("Kadry.Db.AppUser", "ChangedBy")
                         .WithMany()
-                        .HasForeignKey("ChengedById");
+                        .HasForeignKey("ChangedById");
 
                     b.HasOne("Kadry.Db.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.Navigation("ChengedBy");
+                    b.Navigation("ChangedBy");
 
                     b.Navigation("CreatedBy");
                 });
@@ -567,9 +565,9 @@ namespace Kadry.Web.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ActivityId");
 
-                    b.HasOne("Kadry.Db.AppUser", "ChengedBy")
+                    b.HasOne("Kadry.Db.AppUser", "ChangedBy")
                         .WithMany()
-                        .HasForeignKey("ChengedById");
+                        .HasForeignKey("ChangedById");
 
                     b.HasOne("Kadry.Db.AppUser", "CreatedBy")
                         .WithMany()
@@ -577,7 +575,7 @@ namespace Kadry.Web.Data.Migrations
 
                     b.Navigation("Activity");
 
-                    b.Navigation("ChengedBy");
+                    b.Navigation("ChangedBy");
 
                     b.Navigation("CreatedBy");
                 });
