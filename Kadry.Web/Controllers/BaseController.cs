@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Diagnostics;
-
+using System.Threading.Tasks;
 
 namespace Kadry.Web.Controllers
 {
@@ -63,6 +63,12 @@ namespace Kadry.Web.Controllers
             var model = mapper.Map< IEnumerable<MyEntity> , IEnumerable<Q>>(listDb);
             return model;
         }
+        //protected async Task<List<Q>> _getViewModelListAsync<T, Q>() where T : MyEntity where Q : BaseViewModel
+        //{
+        //    var listDb = new KadryRepository<T>(_context).GetAllAsync();
+        //    var model = mapper.Map< Task<List<T>>, List<Q>> (listDb);
+        //    return model;
+        //}
     }
 
    

@@ -5,6 +5,7 @@ using System.Linq;
 using Kadry.Db;
 using Kadry.Web.Data.Context;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Kadry.Web.Data.Repository
 {
@@ -53,6 +54,10 @@ namespace Kadry.Web.Data.Repository
         public IEnumerable<T> GetAll()
         {
             return Table.ToList<T>();
+        }
+        public Task<List<T>> GetAllAsync()
+        {
+            return Table.ToListAsync<T>();
         }
 
         public T GetById(int id)
