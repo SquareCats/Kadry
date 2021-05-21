@@ -9,6 +9,7 @@ using AutoMapper;
 using System.Threading.Tasks;
 using Kadry.Db.Data;
 using Kadry.Web.Models.BusinessLogicViewModel;
+using Kadry.Web.Data.Repository;
 
 namespace Kadry.Web.Controllers
 {
@@ -29,10 +30,27 @@ namespace Kadry.Web.Controllers
         }
         #endregion
 
+        #region Person
         public IActionResult PersonList()
         {
             var list = _getViewModelList<PersonDb, PersonViewModel>();
             return View(list);
         }
+        public IActionResult PersonGet(int id)
+        {
+            var model = _getModelEntity<PersonDb, PersonViewModel>(id);
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult PersonGet(PersonViewModel personVm)
+        {
+            var dbModel = mapper.Map<PersonViewModel, PersonDb>(personVm);
+            var repo = new KadryRepository<PersonDb>(_context);
+            repo.Attache(dbModel);
+            repo.Save();
+            var list = _getViewModelList<PersonDb, PersonViewModel>();
+            return View("List", list);
+        }
+        #endregion
     }
 }

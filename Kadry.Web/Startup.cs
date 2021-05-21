@@ -74,7 +74,9 @@ namespace Kadry.Web
                var serviceType = assignedTypes.GetInterfaces().First(i => i.GetGenericTypeDefinition() == typeof(IQueryHandler<,>));
                services.AddScoped(serviceType, assignedTypes);
            });
-
+            //
+            //Add Telerik
+            //services.AddKendo();
             //Add seeder Class
             services.AddTransient<KadrySeeder>();
 

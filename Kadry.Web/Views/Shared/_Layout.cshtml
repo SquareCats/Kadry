@@ -6,6 +6,9 @@
     <title>@ViewData["Title"] - Kadry.Web</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+
+    
+
 </head>
 <body>
     <header>
@@ -24,14 +27,43 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="List">Country List</a>
+                       
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="DataMenuLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dane
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="SimpleCrud" asp-action="PersonList">Person List</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="SimpleCrud" asp-action="PersonList">Person List</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="DictionariesMenuLinks" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Słowniki
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="List">Country List</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="List">Country List</a></li>
+
+                            </ul>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
+
+        <div class="dropdown">
+            <!-- Link or button to toggle dropdown -->
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a tabindex="-1" href="#">Action</a></li>
+                <li><a tabindex="-1" href="#">Another action</a></li>
+                <li><a tabindex="-1" href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#">Separated link</a></li>
+            </ul>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">

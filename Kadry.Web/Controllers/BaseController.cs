@@ -60,7 +60,13 @@ namespace Kadry.Web.Controllers
         protected IEnumerable<Q> _getViewModelList<T, Q>() where T:MyEntity where Q:BaseViewModel
         {
             var listDb = new KadryRepository<T>(_context).GetAll();
-            var model = mapper.Map< IEnumerable<MyEntity> , IEnumerable<Q>>(listDb);
+            var model = mapper.Map< IEnumerable<T> , IEnumerable<Q>>(listDb);
+            return model;
+        }
+        protected Q _getModelEntity<T, Q>(int id) where T : MyEntity where Q : BaseViewModel
+        {
+            var modelDb = new KadryRepository<T>(_context).GetById(id);
+            var model = mapper.Map<T, Q>(modelDb);
             return model;
         }
         //protected async Task<List<Q>> _getViewModelListAsync<T, Q>() where T : MyEntity where Q : BaseViewModel
