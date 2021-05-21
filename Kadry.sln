@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS", "CQRS\CQRS.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kadry.Db", "Kadry.Db\Kadry.Db.csproj", "{16062887-165F-4FE8-8EDD-ACE05191E19C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kadry.Tests", "Kadry.Tests\Kadry.Tests.csproj", "{3E82F11A-7371-472F-AB42-ED7C8746015E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kadry.Tests", "Kadry.Tests\Kadry.Tests.csproj", "{3E82F11A-7371-472F-AB42-ED7C8746015E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
