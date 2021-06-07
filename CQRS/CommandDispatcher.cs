@@ -27,7 +27,24 @@ namespace CQRS
             {
                 throw new CommandHandlerNotFoundxception(typeof(TCommand));
             }
-            command.RowsAffected = handler.Execute(command);
+            try
+            {
+                command.RowsAffected = handler.Execute(command);
+            }
+            catch(ArgumentException argExp)
+            {
+                command.CommandError = string.Format("{0} {1}"
+                    , argExp.Message
+                    , argExp.InnerException != null ? argExp.InnerException.Message : "");
+                command.IsError = true;
+            }
+            catch (Exception exp)
+            {
+                command.CommandError = string.Format("{0} {1}"
+                    , exp.Message
+                    , exp.InnerException != null ? exp.InnerException.Message : "");
+                command.IsError = true;
+            }
             return command.RowsAffected;
         }
 

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kadry.Db", "Kadry.Db\Kadry.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kadry.Tests", "Kadry.Tests\Kadry.Tests.csproj", "{3E82F11A-7371-472F-AB42-ED7C8746015E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Specification", "Specification\Specification.csproj", "{73BD0476-816C-4ECF-84E0-61C2AE777BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3E82F11A-7371-472F-AB42-ED7C8746015E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E82F11A-7371-472F-AB42-ED7C8746015E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E82F11A-7371-472F-AB42-ED7C8746015E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73BD0476-816C-4ECF-84E0-61C2AE777BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73BD0476-816C-4ECF-84E0-61C2AE777BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73BD0476-816C-4ECF-84E0-61C2AE777BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73BD0476-816C-4ECF-84E0-61C2AE777BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
