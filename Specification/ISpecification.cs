@@ -1,9 +1,10 @@
-﻿using Kadry.Db.Data;
-
-namespace Specification
+﻿namespace Specification
 {
-    public interface IPersonSpecification
+    public interface ISpecification<T>
     {
-        bool IsSatisfiedBy(PersonDb entity);
+        bool IsSatisfiedBy(T o);
+        CompositeSpecification<T> And(CompositeSpecification<T> specification);
+        CompositeSpecification<T> Or(CompositeSpecification<T> specification);
+        CompositeSpecification<T> Not(CompositeSpecification<T> specification);
     }
 }
