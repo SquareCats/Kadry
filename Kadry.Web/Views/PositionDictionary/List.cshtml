@@ -1,0 +1,64 @@
+﻿@using Kadry.Web.Models.Dictionaries
+@{
+
+    ViewData["Title"] = "Lista Państw";
+    var i = 0;
+}
+@model IEnumerable<PositionDictionaryViewModel>
+
+
+<div class="dropdown">
+    <!-- Link or button to toggle dropdown -->
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li><a tabindex="-1" href="#">Action</a></li>
+        <li><a tabindex="-1" href="#">Another action</a></li>
+        <li><a tabindex="-1" href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="text-center">
+    <h1 class="display-4">Lista stanowisk</h1>
+
+</div>
+
+
+<table class="table table-info ">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Sort</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Opis</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr class="tableRow">
+                <th scope="row">@(i=i+1)</th>
+                <td>@obj.Id</td>
+                <td>@obj.Sort </td>
+                <td>@obj.Name</td>
+                <td>@obj.Description</td>
+                <td><a class="menu-button-subitem-rounded" asp-controller="PositionDictionary" asp-action="Get" asp-route-id="@(obj.Id.ToString())">Zmień</a></td>
+            </tr>
+
+            @*@(i=i++)*@
+        }
+</table>
+
+<style>
+
+    .tableRow {
+        background-color: powderblue;
+        transition: background-color .5s;
+    }
+
+        .tableRow:hover {
+            background-color: aqua;
+        }
+</style>

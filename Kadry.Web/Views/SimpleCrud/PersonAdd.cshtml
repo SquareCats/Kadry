@@ -1,7 +1,8 @@
 ﻿@model Kadry.Web.Models.BusinessLogicViewModel.PersonViewModel
-@using System 
+@using System
 @{
     ViewData["Title"] = "Add Person";
+    var errors = ViewData.ModelState.Where(n => n.Value.Errors.Count > 0).ToList();
 }
 
 <h4>New Person</h4>
@@ -30,11 +31,22 @@
                 <input asp-for="DateOfBirth" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
+            <div id="errors" style="color:darkred;">
+                <ul>
+                    @foreach (var err in errors)
+                    {
+                        foreach (var errMsg in err.Value.Errors)
+                        {
+                            <li>@errMsg.ErrorMessage</li>
+                        }
+                    }
+                </ul>
+            </div>
 
-            <input type="hidden" asp-for="Id" value="0"/>
-            <input asp-for="CreatedOn" type="hidden" value="@(DateTime.Now)"/>
-            <input asp-for="CreatedBy" type="hidden" value="0"/>
-            <input asp-for="ObjectGuid" type="hidden" value="@(Guid.NewGuid())"/>
+            <input type="hidden" asp-for="Id" value="0" />
+            <input asp-for="CreatedOn" type="hidden" value="@(DateTime.Now)" />
+            <input asp-for="CreatedBy" type="hidden" value="0" />
+            <input asp-for="ObjectGuid" type="hidden" value="@(Guid.NewGuid())" />
             <input asp-for="ChangedOn" type="hidden" />
             <input asp-for="ChangedBy" type="hidden" />
 

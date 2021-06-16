@@ -2,8 +2,8 @@
 
 namespace Kadry.Web.Models.Dictionaries
 {
-    public class CountryViewModel : DictionaryBaseViewModel
+    public class PositionDictionaryViewModel : DictionaryBaseViewModel
     {
-        
+
     }
 }

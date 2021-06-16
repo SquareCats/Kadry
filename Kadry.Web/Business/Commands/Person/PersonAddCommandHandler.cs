@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Kadry.Web.Data.Context;
 using Kadry.Web.Data.Repository;
 using Kadry.Db.Data;
+using Specification.Person;
 
 namespace Kadry.Web.Business.Commands.Person
 {
@@ -20,11 +21,20 @@ namespace Kadry.Web.Business.Commands.Person
         public int Execute(PersonAddCommand command)
         {
             var result = -1;
+            if(
+                !new PersonSpecificationSocialNumberHasElevenDigits<PersonDb>()
+                .And(new PersonSpecificationSocialNumberAndBrithDateMatch<PersonDb>()).IsSatisfiedBy(command.Person)
+                )
+            {
+                command.CommandError = string.Format("Pole pesel nie spełnia wymagań. ({0}).", command.Person.SocialNumber);
+                command.IsError = true;
+                return result;
+            }
             var persons = new KadryRepository<PersonDb>(_context);
             var person = persons.Filter(x => x.SocialNumber == command.Person.SocialNumber).FirstOrDefault();
             if (person!=null)
             {
-                command.CommandError = string.Format("A person with this social number already exists in the database ({0}).", command.Person.SocialNumber);
+                command.CommandError = string.Format("W bazie istnieje już osoba z tym numerem PESEL ({0}).", command.Person.SocialNumber);
                 command.IsError = true;
                 return result;
             }

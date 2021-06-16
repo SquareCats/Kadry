@@ -1,5 +1,6 @@
 ﻿using Kadry.Db;
 using Kadry.Db.Data;
+using Kadry.Db.Dictionaries;
 using Kadry.Web.Data.Context;
 using Kadry.Web.Data.Repository;
 using Microsoft.AspNetCore.Hosting;
@@ -52,6 +53,7 @@ namespace Kadry.Web.Data.SeedData
             SeedCurrency(user);
             SeedLogLevel(user);
             SeedPersons(user);
+            SeedPositionDictionary(user);
         }
 
         private void SeedPersons(AppUser user)
@@ -158,6 +160,35 @@ namespace Kadry.Web.Data.SeedData
                             new CurrencyDb { Name = "Zloty", CreatedBy=user , CreatedOn=DateTime.Now},
                             new CurrencyDb { Name = "Euro", CreatedBy=user, CreatedOn=DateTime.Now },
                             new CurrencyDb { Name = "Dolar", CreatedBy=user, CreatedOn=DateTime.Now } }
+                        );
+                ctx.Database.OpenConnection();
+                try
+                {
+                    ctx.SaveChanges();
+                }
+                finally
+                {
+                    ctx.Database.CloseConnection();
+                }
+            }
+        }
+        private void SeedPositionDictionary(AppUser user)
+        {
+            var countryRepository = new KadryRepository<PositionDictionaryDb>(ctx);
+            if (!countryRepository.GetAll().Any())
+            {
+                countryRepository.InsertRange(
+                        new List<PositionDictionaryDb>
+                        {
+                                new PositionDictionaryDb { Name = "Prezes", Sort=1, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                                new PositionDictionaryDb { Name = "Dyrektor", Sort=3, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                                new PositionDictionaryDb { Name = "Kierownik", Sort=5, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                                new PositionDictionaryDb { Name = "Księgowy", Sort=7, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                                new PositionDictionaryDb { Name = "Kierowca", Sort=9, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                                new PositionDictionaryDb { Name = "Pracownik Działu IT", Sort=11, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                                new PositionDictionaryDb { Name = "Pracownik Administracyjny", Sort=11, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                                new PositionDictionaryDb { Name = "-- Nie określono --", Sort=90, CreatedBy=user, CreatedOn=DateTime.Now, Description="" },
+                        }
                         );
                 ctx.Database.OpenConnection();
                 try

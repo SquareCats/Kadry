@@ -20,5 +20,6 @@ namespace Kadry.Db.Data
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
+        public List<PositionDb> Positions;
     }
 }

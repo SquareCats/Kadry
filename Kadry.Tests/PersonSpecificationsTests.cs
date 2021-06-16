@@ -47,6 +47,16 @@ namespace Kadry.Tests
             var isSatisfied = socialNumberAndDataBirthSpec.IsSatisfiedBy(personInvalidToCheck);
             Assert.AreEqual(false, isSatisfied);
         }
+        [TestMethod]
+        public void CheckIfAndSpecificationsGoodAllWorks()
+        {
+            ISpecification<PersonDb> socialNumberAndDataBirthSpec = new PersonSpecificationSocialNumberAndBrithDateMatch<PersonDb>();
+            var socialNumberLengthEleven = new ExpressionSpecification<PersonDb>(x => x.SocialNumber.Length == 11);
+            var isSatisfied =   socialNumberAndDataBirthSpec
+                                .And(socialNumberLengthEleven)
+                                .IsSatisfiedBy(personInvalidToCheck);
+            Assert.AreEqual(false, isSatisfied);
+        }
 
         [TestMethod]
         public void CheckIfPersonExpressionSpecificationWorks()

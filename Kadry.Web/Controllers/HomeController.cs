@@ -2,21 +2,15 @@
 using CQRS;
 using Kadry.Db;
 using Kadry.Web.Data.Context;
-using Kadry.Web.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-
 
 namespace Kadry.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        
-
-
         #region constructor
         public HomeController(ILogger<CountryController> logger
             , KadryDbContext context

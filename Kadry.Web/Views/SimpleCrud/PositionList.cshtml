@@ -1,0 +1,45 @@
+﻿@using Kadry.Web.Models.BusinessLogicViewModel
+@{
+
+    ViewData["Title"] = "Lista Umów o pracę";
+    var i = 0;
+}
+@model IEnumerable<PositionViewModel>
+
+
+<div class="text-center">
+    <h1 class="display-4">Lista umów o pracę</h1>
+</div>
+
+<a class="menu-button-subitem-rounded" asp-controller="SimpleCrud" asp-action="PersonAdd">Dodaj</a>
+
+<table class="table table-info ">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">stanowisko</th>
+            <th scope="col">od dnia</th>
+            <th scope="col">do dnia</th>
+            <th scope="col">nr umowy</th>
+            <th scope="col">data umowy</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+        <tr class="tableRow">
+            <th scope="row">@(i=i+1)</th>
+            <td>@obj.Id</td>
+            <td>@obj.Position.Name </td>
+            <td>@obj.FromTxt</td>
+            <td>@obj.ToTxt</td>
+            <td>@obj.ContractNumber</td>
+            <td>@obj.ContractDateTxt</td>
+            <td><a class="menu-button-subitem-rounded" asp-controller="SimpleCrud" asp-action="PositionGet" asp-route-id="@(obj.Id.ToString())">Zmień</a></td>
+        </tr>
+
+            @*@(i=i++)*@
+        }
+</table>

@@ -8,16 +8,14 @@ using Microsoft.Extensions.Logging;
 using Kadry.Web.Data.Repository;
 using AutoMapper;
 using Kadry.Web.Models.Dictionaries;
-using System.Collections.Generic;
-using Kadry.Web.Models;
+using Kadry.Db.Dictionaries;
 
 namespace Kadry.Web.Controllers
 {
-    public class CountryController : BaseController
+    public class PositionDictionaryController : BaseController
     {
-
         #region constructor
-        public CountryController(ILogger<CountryController> logger
+        public PositionDictionaryController(ILogger<CountryController> logger
             , KadryDbContext context
              , IMapper mapper
             , IQueryDispatcher queryDispatcher
@@ -34,29 +32,25 @@ namespace Kadry.Web.Controllers
         #region Views
         public IActionResult List()
         {
-            //var listDb = new KadryRepository<CountryDb>(_context).GetAll();
-            //var model = mapper.Map<IEnumerable<CountryDb>, IEnumerable<CountryViewModel>>(listDb);
-            var list = _getViewModelList<CountryDb, CountryViewModel>();
+            var list = _getViewModelList<PositionDictionaryDb, PositionDictionaryViewModel>();
             return View(list);
         }
         public IActionResult Get(int id)
         {
-            var dbObject = new KadryRepository<CountryDb>(_context).GetById(id);
-            var model = mapper.Map<CountryDb, CountryViewModel>(dbObject);
+            var dbObject = new KadryRepository<PositionDictionaryDb>(_context).GetById(id);
+            var model = mapper.Map<PositionDictionaryDb, PositionDictionaryViewModel>(dbObject);
             return View(model);
         }
         [HttpPost]
-        public IActionResult Get(CountryViewModel countryVm)
+        public IActionResult Get(PositionDictionaryViewModel positionVm)
         {
-            var dbModel = mapper.Map<CountryViewModel, CountryDb>(countryVm);
-            var repo = new KadryRepository<CountryDb>(_context);
+            var dbModel = mapper.Map<PositionDictionaryViewModel, PositionDictionaryDb>(positionVm);
+            var repo = new KadryRepository<PositionDictionaryDb>(_context);
             repo.Attache(dbModel);
             repo.Save();
-            var list = _getViewModelList<CountryDb, CountryViewModel>();
+            var list = _getViewModelList<PositionDictionaryDb, PositionDictionaryViewModel>();
             return View("List", list);
-
         }
         #endregion
-
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Kadry.Db;
 using Kadry.Db.Data;
+using Kadry.Db.Dictionaries;
 using Kadry.Web.Models;
 using Kadry.Web.Models.BusinessLogicViewModel;
 using Kadry.Web.Models.Dictionaries;
@@ -26,6 +27,8 @@ namespace Kadry.Web.Data.AutoMapper
             CreateMap<DictionaryDb, DictionaryBaseViewModel>().ReverseMap();
             CreateMap<CountryDb, CountryViewModel>().ReverseMap();
             CreateMap<PersonDb, PersonViewModel>().ReverseMap();
+            CreateMap<PositionDb, PositionViewModel>().ReverseMap();
+            CreateMap<PositionDictionaryDb, PositionDictionaryViewModel>().ReverseMap();
             //     AutoMapper.Mapper.CreateMap<ReferenceEngine, Engine>()
             //.ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description)).ReverseMap();
 

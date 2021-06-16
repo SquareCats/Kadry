@@ -27,7 +27,7 @@ namespace Kadry.Web
             using var scope = scopeFactory.CreateScope();
             var seeder = scope.ServiceProvider.GetService<KadrySeeder>();
             seeder.SeedAsync().Wait();
-            //problemy z rzutowaniem Usera created i chcnged
+            //problemy z rzutowaniem Usera created i changed
             //http://go.microsoft.com/fwlink/?LinkId=724062
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
