@@ -1,11 +1,17 @@
 ﻿@model Kadry.Web.Models.BusinessLogicViewModel.PersonViewModel
 
 @{
-    ViewData["Title"] = @Model.Name+" - Modify Data";
+    ViewData["Title"] = @Model.Name + " - Modify Data";
 }
 
 <h4>Person @Model.Id - @Model.Name @Model.FirstName </h4>
 <hr />
+@{ 
+    if (ViewBag.Error != null)
+            {
+               <p style="color:red;"> @ViewBag.Error.ToString()</p>
+            }
+    }
 <div class="row">
     <div class="col-md-4">
         <form asp-action="PersonGet">
@@ -46,7 +52,7 @@
 </div>
 
 <div>
-    <a asp-controller="SimpleCrud" asp-action="PersonList">Back to List</a>
+    <a asp-controller="Person" asp-action="PersonList">Back to List</a>
 </div>
 
 @section Scripts {

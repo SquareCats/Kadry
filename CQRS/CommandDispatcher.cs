@@ -16,7 +16,7 @@ namespace CQRS
         public string ErrorMessage { get; set; }
         public bool CommandRetunedError { get; set; }
 
-        public int Execute<TCommand>(TCommand command) where TCommand : ICommand
+        public ICommand Execute<TCommand>(TCommand command) where TCommand : ICommand
         {
             if (command == null)
             {
@@ -29,7 +29,7 @@ namespace CQRS
             }
             try
             {
-                command.RowsAffected = handler.Execute(command);
+                var result = handler.Execute(command);
             }
             catch(ArgumentException argExp)
             {
@@ -45,7 +45,7 @@ namespace CQRS
                     , exp.InnerException != null ? exp.InnerException.Message : "");
                 command.IsError = true;
             }
-            return command.RowsAffected;
+            return command;
         }
 
         public class CommandHandlerNotFoundxception : Exception

@@ -27,12 +27,12 @@
 
     public interface ICommandHandler<in TCommand> where TCommand:ICommand
     {
-        int Execute(TCommand command);
+        ICommand Execute(TCommand command);
     }
     public interface ICommandDispatcher
     {
         string ErrorMessage { get; set; }
         public bool CommandRetunedError { get; set; }
-        public int Execute<TCommand>(TCommand comand) where TCommand : ICommand;
+        public ICommand Execute<TCommand>(TCommand comand) where TCommand : ICommand;
     }
 }

@@ -1,11 +1,21 @@
 ﻿@model Kadry.Web.Models.BusinessLogicViewModel.PositionViewModel
 
 @{
-    ViewData["Title"] = @Model.Person.Name + @Model.Person.FirstName + " - Modify Data";
+    if (@Model.Person != null)
+    {
+        ViewData["Title"] = @Model.Person.Name + @Model.Person.FirstName + " - Modify Data";
+    }
+
 }
 
 <h4>Person @Model.Id - @Model.Person.Name + @Model.Person.FirstName  </h4>
 <hr />
+@{
+    if (ViewBag.Error != null)
+    {
+    <p style="color:red;"> @ViewBag.Error.ToString()</p>
+    }
+}
 <div class="row">
     <div class="col-md-4">
         <form asp-action="PersonGet">
@@ -50,7 +60,7 @@
 </div>
 
 <div>
-    <a asp-controller="SimpleCrud" asp-action="PositionList">Back to List</a>
+    <a asp-controller="Position" asp-action="PositionList">Back to List</a>
 </div>
 
 @section Scripts {
