@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using AutoMapper;
 using CQRS;
 using Kadry.Db;
@@ -68,9 +68,13 @@ namespace Kadry.Web.Controllers
             var model = mapper.Map<IEnumerable<T>, IEnumerable<Q>>(new KadryRepository<T>(_context).GetAll());
             return model;
         }
- 
+        public IEnumerable<Q> GenericEntityFilteredList(Func<T, bool> expression)
+        {
+            var model = mapper.Map<IEnumerable<T>, IEnumerable<Q>>(new KadryRepository<T>(_context).Filter(expression));
+            return model;
+        }
         #region Views
-        
+
         #endregion
         //protected IEnumerable<Q> _getViewModelList<Q>() where Q:BaseViewModel
         //{

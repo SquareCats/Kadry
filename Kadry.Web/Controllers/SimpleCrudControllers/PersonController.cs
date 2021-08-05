@@ -12,7 +12,8 @@ using System.Collections.Generic;
 using Kadry.Web.Data.Repository;
 using Kadry.Web.Business.Commands.Person;
 using System;
-
+using Kadry.Web.Models;
+using System.Linq;
 namespace Kadry.Web.Controllers.SimpleCrudControllers
 {
     public partial class PersonController : GenericBaseController<PersonDb, PersonViewModel>
@@ -75,6 +76,20 @@ namespace Kadry.Web.Controllers.SimpleCrudControllers
             };
             return View("PersonGet", model);
         }
-        
+
+
+        [HttpGet]
+        public JsonResult PersonsJson(string text)
+        {
+            var list = new List<ListModelItem>();
+            var b = 
+                            (
+                            from PersonViewModel item in GenericEntityFilteredList(x => x.Name.StartsWith(text))
+                            select new ListModelItem { value = item.Id.ToString(), text = item.Description }
+                            ).ToList()
+                         ;
+
+            return Json(b);
+        }
     }
 }

@@ -56,6 +56,14 @@ namespace Kadry.Web.Controllers.SimpleCrudControllers
         {
             return View(EntityGet(id));
         }
+        [HttpPost]
+        public IActionResult PositionGet(PositionViewModel positionVm)
+        {
+            var ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
+            ModelState.AddModelError("Not implememnted", "Position command does not ready yet.");
+            ViewBag.Error = "Position command does not ready yet.";
+            return View("PositionGet", positionVm);
+        }
         public IActionResult PositionAdd(int id)
         {
             var model = new PositionViewModel();

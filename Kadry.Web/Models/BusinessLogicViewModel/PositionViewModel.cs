@@ -27,5 +27,6 @@ namespace Kadry.Web.Models.BusinessLogicViewModel
         public string ContractDateTxt { get { return ContractDate.ToShortDateString(); } }
 
         public PersonViewModel Person { get; set; }
+        public int PersonId { get; set; }
     }
 }

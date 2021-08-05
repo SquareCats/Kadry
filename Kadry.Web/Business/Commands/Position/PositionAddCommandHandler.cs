@@ -22,10 +22,10 @@ namespace Kadry.Web.Business.Commands.Position
             try
             {
                 var positions = new KadryRepository<PositionDb>(_context);
-                var position = positions.Filter(x => x.Person.Id == command.Position.Person.Id && x.ContractDate == command.Position.ContractDate).FirstOrDefault();
+                var position = positions.Filter(x => x.Person.Id == command.Position.Person.Id && x.ContractDate.Date == command.Position.ContractDate.Date).FirstOrDefault();
                 if (position != null)
                 {
-                    command.CommandError = string.Format("W bazie istnieje już wpis o umowie dla osoby {0} w podanym dniu {1}. z tym numerem PESEL ({0}).", command.Position.Person.Id, command.Position.ContractDate.ToShortDateString());
+                    command.CommandError = string.Format("W bazie istnieje już wpis o umowie dla osoby z numerem PESEL:{0} w dniu {1}.", command.Position.Person.Id, command.Position.ContractDate.ToShortDateString());
                     command.IsError = true;
                     return command;
                 }
